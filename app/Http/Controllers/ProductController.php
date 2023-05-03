@@ -32,4 +32,19 @@ class ProductController extends Controller
         Candy::destroy($request->all());
         return redirect('home');
     }
+    public function edit($id)
+    {
+        if (!Auth::check() || (Auth::check() and Auth::user()->role != 2))
+            return "<h1>Forbidden Action</h1>";
+        $candy = Candy::find($id);
+        return view('edit', compact("candy"));
+    }
+
+    public function update(Request $request)
+    {
+        if (!Auth::check() || (Auth::check() and Auth::user()->role != 2))
+            return "<h1>Forbidden Action</h1>";
+        $candy = Candy::find($request["id"])->update($request->all());
+        return redirect("home");
+    }
 }
