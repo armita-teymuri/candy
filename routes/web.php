@@ -35,3 +35,4 @@ Route::get("/logout", [LogoutController::class, "index"]);
 
 Route::get("/create", [ProductController::class, "index"]);
 Route::post("/create", [ProductController::class, "store"]);
+Route::post("/delete", [ProductController::class, "delete"]);

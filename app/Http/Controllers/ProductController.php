@@ -25,4 +25,11 @@ class ProductController extends Controller
         Candy::create($request->all());
         return redirect('home');
     }
+    public function delete(Request $request)
+    {
+        if (!Auth::check() || (Auth::check() and Auth::user()->role != 2))
+            return "<h1>Forbidden Action</h1>";
+        Candy::destroy($request->all());
+        return redirect('home');
+    }
 }
