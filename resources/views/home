@@ -1,0 +1,38 @@
+@extends('layout') @section('content')
+@guest
+<h2>you are guest... pleas login</h2>
+<a href="/login">LOGIN</a>
+@else
+<h2>welcome {{ Auth::user()->name }} to my candy shop</h2>
+<a href="/logout">logout</a>
+<hr />
+@if (Auth::user()->role == 2)
+<h3>you are admin</h3>
+<a href="/create">create product</a>
+@else
+<h3>you are customer</h3>
+<a href="/basket">shoping basket</a>
+@endif
+@endguest
+@php
+const TYPES = [1 => 'kg', 2 => 'pices', 3 => 'box'];
+@endphp
+@foreach ($candies as $item)
+<hr />
+<img src="{{ url('/uploads/' . $item->image) }}" alt="abas agha">
+<h2>{{ $item->name }}</h2>
+<p>{{ $item->desc }}</p>
+<h3>{{ $item->price }}</h3>
+<h3>{{ $item->amount }} -{{ TYPES[$item->type] }} </h3>
+@if (Auth::user() != null && Auth::user()->role == 2)
+<form action="/delete" method="post">
+    @csrf
+    <input type="hidden" name="id" value="{{ $item->id }}">
+    <input type="submit" value="delete">
+</form>
+<a href="/edit/{{ $item->id }}">edit</a>
+@elseif (Auth::user() != null && Auth::user()->role == 1)
+<button>buy</button>
+@endif
+@endforeach
+@endsection
