@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #ecc9ee;
+    font-family: "Indie Flower", cursive;
+    font-family: "Itim", cursive;
+}
+.frm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+input {
+    margin-top: 1em;
+}
+select {
+    margin-top: 1em;
+}
+.my-nav {
+    background-color: #ffdcb6 !important;
+}
+a {
+    color: #9384d1 !important;
+}
+.my-btn {
+    color: #9384d1 !important;
+    border: 1px solid #9384d1 !important;
+}
+.my-btn:hover {
+    color: white !important;
+    background-color: #9384d1 !important;
+}
+.welcom {
+    font-size: 1em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    background-color: #dbc5f0;
+    flex-direction: column;
+}
+h2 {
+    font-size: 1em;
+}
+h3 {
+    font-size: 1em;
+}
